@@ -700,7 +700,8 @@ static void *obs_x264_create(obs_data_t *settings, obs_encoder_t *encoder)
 {
 	video_t *video = obs_encoder_video(encoder);
 	const struct video_output_info *voi = video_output_get_info(video);
-	switch (voi->colorspace) {
+	// Just comment them out to get very correct x264 10-bit streaming support
+	/*switch (voi->colorspace) {
 	case VIDEO_CS_2100_PQ:
 	case VIDEO_CS_2100_HLG:
 		obs_encoder_set_last_error(encoder,
@@ -708,7 +709,7 @@ static void *obs_x264_create(obs_data_t *settings, obs_encoder_t *encoder)
 		warn_enc(encoder,
 			 "OBS does not support using x264 with Rec. 2100");
 		return NULL;
-	}
+	}*/
 
 	struct obs_x264 *obsx264 = bzalloc(sizeof(struct obs_x264));
 	obsx264->encoder = encoder;
